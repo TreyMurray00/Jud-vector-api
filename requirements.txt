@@ -1,0 +1,8 @@
+deepface
+fastapi[standard]
+numpy
+tf-keras
+pgvector
+sqlmodel
+tensorflow
+python-dotenv
