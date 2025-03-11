@@ -1,22 +1,28 @@
 import os
 import psycopg2
-from dotenv import load_dotenv, set_key
+from dotenv import load_dotenv
 
 def create_extension():
-    # "postgresql://admin:password@localhost:5432/vectordb"
     
     conn = None
     cur = None
     try:
-
+        print("Loading environment variables")
         load_dotenv()
-        # Establish the connection: VALUES LOADED FROM .ENV FILE
+        print("Loading environment variables")
+
+        host=os.getenv("HOST")
+        user=os.getenv("POSTGRES_USER")
+        database=os.getenv("POSTGRES_DB")
+        password=os.getenv("POSTGRES_PASSWORD")
+        port=os.getenv("DB_PORT")
+        print("Creating Postgres vector plugin if it does not exist")
         conn = psycopg2.connect(
-            host="localhost",
-            user="admin",
-            database="vectordb",
-            password="password",
-            port=5432
+            host=host,
+            user=user,
+            database=database,
+            password=password,
+            port=port
         )
         cur = conn.cursor()
         
