@@ -9,7 +9,7 @@ def create_extension():
     try:
         print("Loading environment variables")
         load_dotenv()
-        print("Environment variables loaded")
+        print("Loading environment variables")
 
         host=os.getenv("HOST")
         user=os.getenv("POSTGRES_USER")
