@@ -3,14 +3,13 @@ from .embedding import get_embedding
 from models.user import UserData
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List, Union
-
-async def search(session: AsyncSession, image: str) -> Union[List, Exception]:
+def search(session: AsyncSession, image: str) -> Union[List, Exception]:
     try:
         embedding = get_embedding(image)
         if not isinstance(embedding, list):
             raise ValueError("Embedding must be a list")
         
-        stmt = select(UserData.id, UserData.name).order_by(UserData.embedding.op("<=>")(embedding)).limit(1)
+        stmt = select(UserData.id, UserData.name).order_by(UserData.embedding.op("<->")(embedding)).limit(1)
         result = session.exec(stmt)
         data = result.all()
         
