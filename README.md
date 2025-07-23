@@ -28,7 +28,7 @@
   run: "fastapi dev" to run in development environment and go to 127.0.0.1/docs to see the documentation and test the endpoints or "fastapi run" for production environments
 </p>
 <p>
-  Commad is run and the correct information for the database is provided in the .env file. The application will actomatically connect and configure the database to install the postgress vector plugin as well as load any enviroment variables. 
+ On startup when the correct information for the database is provided in the .env file the application will automatically connect and configure the database to install the postgress vector plugin as well as load any enviroment variables. 
 </p>
 
 
